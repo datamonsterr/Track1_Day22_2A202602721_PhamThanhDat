@@ -279,6 +279,17 @@ def validate_formatted_number(value, formatted, label):
             f'Formatted value disagrees with workbook: {label}: {formatted!r} vs {value!r}')
 
 
+def numeric_claims(text, sheet_names):
+    """Exclude URLs and precise workbook identifiers, retaining all numeric claims."""
+    claims = re.sub(r"https?://\S+", "", text)
+    cell = r"\$?[A-Z]+\$?\d+"
+    references = rf"(?:'[^']+'|[A-Za-z0-9_]+)!{cell}(?::{cell})?(?:,{cell}(?::{cell})?)*"
+    claims = re.sub(references, "", claims)
+    for sheet_name in sheet_names:
+        claims = claims.replace(sheet_name, '')
+    return set(re.findall(r"\d+(?:[.,]\d+)*", claims))
+
+
 def validate_final_artifacts(root):
     if read_inputs(root)['stage'] < 6:
         return {'status':'not required before checkpoint 6'}
@@ -314,11 +325,9 @@ def validate_final_artifacts(root):
         require(str(entry['formatted']) in text, f'Source-map formatted value absent in DOCX: {entry["label"]}')
     # Every numeric token visible in the DOCX must come from a traced formatted value.
     numeric = re.compile(r'\d+(?:[.,]\d+)*')
-    claims = re.sub(r"https?://\S+", "", text)
-    claims = re.sub(r"(?:'[^']+'|[A-Za-z0-9_]+)!\$?[A-Z]+\$?\d+", "", claims)
+    claims = numeric_claims(text, cached.sheetnames)
     allowed = {token for entry in trace for token in numeric.findall(str(entry['formatted']))}
-    require(set(numeric.findall(claims)) <= allowed,
-            f'Untraced DOCX numbers: {sorted(set(numeric.findall(claims)) - allowed)}')
+    require(claims <= allowed, f'Untraced DOCX numbers: {sorted(claims - allowed)}')
     # Text extracted from PDF must retain every substantive document word.
     words = lambda value: set(re.findall(r'[^\W\d_]+', value.lower(), re.UNICODE))
     require(words(text) <= words(pdf_text), f'DOCX content missing from PDF: {sorted(words(text)-words(pdf_text))[:8]}')

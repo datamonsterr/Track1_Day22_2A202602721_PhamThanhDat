@@ -175,3 +175,10 @@ def test_source_map_cannot_disguise_a_different_number():
 def test_source_map_accepts_declared_rounding_and_units(value, formatted):
     from scripts.validate_model import validate_formatted_number
     validate_formatted_number(value,formatted,'fixture')
+
+
+def test_sheet_identifiers_and_reference_ranges_are_not_numeric_claims():
+    from scripts.validate_model import numeric_claims
+    text = ('V!A26:D27; G!B5:B23; A!B28:B35,B79; M!B5:B8; A!B70:B77. '
+            '1_Cost_Job; 5_90Day_Plan; 7_Assumptions. Plan 90 ngày, GM 74.76%.')
+    assert numeric_claims(text, ['1_Cost_Job','5_90Day_Plan','7_Assumptions']) == {'90','74.76'}
