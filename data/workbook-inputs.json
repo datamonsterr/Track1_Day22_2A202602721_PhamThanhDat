@@ -1,5 +1,5 @@
 {
-  "stage": 5,
+  "stage": 6,
   "checked_on": "2026-10-08",
   "sheets": {
     "1_Cost_Job": {
@@ -47,7 +47,7 @@
       "D26": "https://www.swarmia.com/pricing/",
       "A27": "LinearB Essentials",
       "B27": "Hybrid: seat + AI credits",
-      "C27": "$29/user/tháng annual; 1.000 credits; thêm từ $0,015/credit",
+      "C27": "$29/user/tháng annual; ≥50 dev; 1.000 credits; thêm từ $0,015/credit",
       "D27": "https://linearb.io/pricing",
       "B30": "Hybrid",
       "B31": "Không override: khớp Seat/Hybrid. CTO vẫn review, chưa đủ bằng chứng bán Outcome.",
@@ -107,14 +107,14 @@
       "B17": "≥1 AI-ready/report/org trong 14 ngày; 3 pilot onboard; coverage ≥80%; không lỗi critical.",
       "B18": "Phạm Thanh Đạt — 08/10 đến 06/11/2026",
       "C12": "PLG: GitHub App/Marketplace listing nếu được duyệt",
-      "C13": "60 qualified installs; 12 activation; 3 paid; 10 active workspaces mục tiêu, không đồng nghĩa 10 paid",
+      "C13": "60 qualified installs; 12 activation; 3 paid. 10 paying workspace chỉ là steady-state scenario sau cohort đầu.",
       "C14": "Pilot 4 tuần kết thúc 20/11; xuất report 23/11 và đo refund/dispute.",
       "C15": "Ráp self-serve onboarding, security Q&A và report mẫu; submit listing, không claim đã approved.",
       "C16": "Bỏ tối đa $1.200 acquisition; stop nếu CAC>$400 hoặc sau 20 installs chưa 4 activation.",
       "C17": "3 paid từ 60 installs; CAC≤$400; median activation≤14 ngày; điều kiện GM60 theo eval lower bound.",
       "C18": "Phạm Thanh Đạt — 07/11/2026 đến 05/01/2027",
       "D12": "PLG, giữ nguyên một kênh; chưa mở motion sales/partner",
-      "D13": "Chưa cam kết số khách mới; chỉ scale sau gate; đủ ≥4 paid trước giá steady-state $60 với shared floor hiện tại",
+      "D13": "Chưa cam kết khách mới; ≥4 serviced paid chỉ là minimum theo c=75% planning; rollout phải đạt floor3× và GM60 bằng eval lower bound ở volume thật.",
       "D14": "Mở nhóm 51–100 dev chỉ nếu cohort hiện tại giữ ≥75% org publish tháng kế tiếp.",
       "D15": "So invoice, eval, giờ QA và retention; cập nhật infra/tenant và pricing trước nâng quota.",
       "D16": "Nếu permission/onboarding còn cần demo riêng, dừng PLG scale và ra quyết định mới.",
@@ -333,7 +333,7 @@
       1200,
       "USD/90days",
       "hypothesis",
-      "$800 founder content (40h×$20) + $200 content tools + $200 placement",
+      "$800 founder40h×20 + $200 tools + $200 placement/trial ($150 trial variable reserve + $50 placement). Not actual spend.",
       "No actual spend"
     ],
     [
@@ -657,11 +657,11 @@
       "6_Benchmarks"
     ],
     [
-      "90-day active workspace target",
+      "Later steady-state paid scenario",
       10,
       "workspaces",
       "target",
-      "10 active, not all paid. Baseline10 paying is steady-state scenario beyond initial funnel.",
+      "Not Day90 target. Initial funnel3paid; do not continuously serve7unpaid tenants with paying-cohort economics.",
       "90-day plan"
     ],
     [
@@ -724,8 +724,8 @@
       "Minimum paid orgs at floor3x",
       4,
       "workspaces",
-      "derived rounded condition",
-      "40-attempt baseline assumes10paid; at4paid/16attempts floor<$60",
+      "point-estimate planning",
+      "Only4serviced paying orgs at75% point estimate; full rollout must verify floor3× and GM60 at eval lower bound and actual volume.",
       "Cost volume equation"
     ],
     [
@@ -735,6 +735,102 @@
       "derived target",
       "3 incremental paying orgs, not10paying",
       "PLG acquisition forecast"
+    ],
+    [
+      "PLG activated customers",
+      "=B29*B30",
+      "organizations",
+      "derived target",
+      "Only activated users receive one bounded report, not all60installs",
+      "PLG funnel"
+    ],
+    [
+      "Course day",
+      22,
+      "day",
+      "course identifier",
+      "Template source filenames Day22; original workbook contains Day28 typo",
+      "Uploaded course"
+    ],
+    [
+      "Student identifier",
+      "2A202602721",
+      "identifier",
+      "provided",
+      "Not a financial figure",
+      "User repository name"
+    ],
+    [
+      "Trial variable service reserve",
+      150,
+      "USD/90days",
+      "budget estimate",
+      "Within$200 acquisition placement/trial budget, not production COGS duplicate",
+      "PLG budget"
+    ],
+    [
+      "Trial expected attempts",
+      "=B79/'1_Cost_Job'!B10",
+      "attempts",
+      "derived estimate",
+      "12activated jobs /75% success; cap spend, no unlimited histories",
+      "PLG forecast"
+    ],
+    [
+      "Trial variable COGS",
+      "=B83*(B37+'1_Cost_Job'!B31+'1_Cost_Job'!B38+'1_Cost_Job'!B47+'2_Pricing'!B30)",
+      "USD/90days",
+      "derived estimate",
+      "Sharedfloor80 assigned once to paid cohort; if no paid cohort, acquisition budget also bears floor",
+      "PLG forecast"
+    ],
+    [
+      "Pilot floor3x containment",
+      "=B73*'1_Cost_Job'!B10*'2_Pricing'!B6/'2_Pricing'!B19",
+      "fraction",
+      "derived",
+      "3workspace requires80.12549% point containment for floor3x",
+      "Pilot scenario"
+    ],
+    [
+      "Four-paid floor3x containment",
+      "=((B36/(B77*B13))+B37+'1_Cost_Job'!B31+'1_Cost_Job'!B47+'2_Pricing'!B30)*'2_Pricing'!B6/'2_Pricing'!B19",
+      "fraction",
+      "derived",
+      "Stricter than GM60 gate; point75% not same as confidence bound",
+      "Rollout gate"
+    ],
+    [
+      "Pilot GM60 containment",
+      "=B73*'1_Cost_Job'!B10/('2_Pricing'!B19*(1-'2_Pricing'!B32))",
+      "fraction",
+      "derived",
+      "Volume-specific pilot healthy margin threshold",
+      "Pilot scenario"
+    ],
+    [
+      "GM risk threshold",
+      0.5,
+      "fraction",
+      "lab risk convention",
+      "For risk warning only; healthy GM target60%",
+      "Lab Checkpoint3"
+    ],
+    [
+      "Scorecard maximum",
+      10,
+      "points",
+      "lab convention",
+      "Not a measured metric; score total maximum",
+      "3_Value_Metric!A10,A18"
+    ],
+    [
+      "Course track",
+      1,
+      "track",
+      "course identifier",
+      "Track1 from uploaded template",
+      "0_README!A2"
     ]
   ],
   "notes": {

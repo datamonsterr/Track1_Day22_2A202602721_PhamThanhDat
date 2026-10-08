@@ -82,7 +82,44 @@ def render():
     folder, pdf = convert(path, 'pdf')
     path.with_suffix('.pdf').write_bytes(pdf.read_bytes())
     folder.cleanup()
-    print('Rendered DOCX to PDF with LibreOffice.')
+    import pymupdf
+    document = pymupdf.open(path.with_suffix('.pdf'))
+    pages = len(document)
+    document.close()
+    # Metadata is based on actual rendering, not a pre-declared page count.
+    with ZipFile(path) as source:
+        parts = {name: source.read(name) for name in source.namelist()}
+    namespace = 'http://schemas.openxmlformats.org/officeDocument/2006/extended-properties'
+    if 'docProps/app.xml' in parts:
+        root = ET.fromstring(parts['docProps/app.xml'])
+    else:
+        root = ET.Element('{' + namespace + '}Properties')
+        content_namespace = 'http://schemas.openxmlformats.org/package/2006/content-types'
+        types = ET.fromstring(parts['[Content_Types].xml'])
+        ET.SubElement(types, '{' + content_namespace + '}Override', {
+            'PartName': '/docProps/app.xml',
+            'ContentType': 'application/vnd.openxmlformats-officedocument.extended-properties+xml',
+        })
+        parts['[Content_Types].xml'] = ET.tostring(types, encoding='utf-8', xml_declaration=True)
+        rel_namespace = 'http://schemas.openxmlformats.org/package/2006/relationships'
+        rels = ET.fromstring(parts['_rels/.rels'])
+        ET.SubElement(rels, '{' + rel_namespace + '}Relationship', {
+            'Id': 'rIdDay22App',
+            'Type': 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties',
+            'Target': 'docProps/app.xml',
+        })
+        parts['_rels/.rels'] = ET.tostring(rels, encoding='utf-8', xml_declaration=True)
+    element = root.find('{' + namespace + '}Pages')
+    if element is None:
+        element = ET.SubElement(root, '{' + namespace + '}Pages')
+    element.text = str(pages)
+    parts['docProps/app.xml'] = ET.tostring(root, encoding='utf-8', xml_declaration=True)
+    temporary = path.with_suffix('.tmp')
+    with ZipFile(temporary, 'w', ZIP_DEFLATED) as target:
+        for name, data in parts.items():
+            target.writestr(name, data)
+    temporary.replace(path)
+    print(f'Rendered DOCX to PDF with LibreOffice: {pages} page(s).')
 
 
 if __name__ == '__main__':

@@ -45,7 +45,7 @@ QA vendor đã vào COGS. CTO review, quyền ký và 20 phút sửa một ca fa
 | Report GM | **74,75904%** | `2_Pricing!B21` |
 | Containment tối thiểu GM60 | **47,3268%** | `2_Pricing!B33` |
 
-Fully loaded Cost/Job = **$25,144576** (`1_Cost_Job!B67`). Overhead không là COGS; không gọi contribution sau overhead là GM. Giá sàn lab là 3×COGS, không khẳng định $60 đạt 3×fully-loaded cost. All-in bill $39 + 3×$60 = **$219/workspace/tháng**; forecast blended GM = 79,2540%, contribution sau $300 overhead = 65,5554%. Tính lại các giá trị chính xác từ Excel khi nộp.
+Fully loaded Cost/Job = **$25,144576** (`1_Cost_Job!B67`). Overhead không là COGS; không gọi contribution sau overhead là GM. Giá sàn lab là 3×COGS, không khẳng định $60 đạt 3×fully-loaded cost. All-in bill $39 + 3×$60 = **$219/workspace/tháng**; forecast blended GM = 79,2540%, contribution sau $300 overhead = 65,555375%. Tính lại các giá trị chính xác từ Excel khi nộp.
 
 Neo giá trị: 3 báo cáo × 10 giờ chuẩn bị tiết kiệm × $40/h = **$1.200/tháng**, ước tính cần stopwatch. Vùng 10–25% = $120–300/tháng; **all-in $219** nằm trong vùng, không chỉ phần usage $180. Lương analyst $2.000/tháng chỉ là neo phụ; không tuyên bố thay cả người. WTP chưa được đo. USD/VND lấy **giá bán 26.160** từ Vietcombank XML ngày 08/10/2026; không dùng tỷ giá giả định 26.000 mẫu.
 
@@ -74,6 +74,6 @@ GM < 0.50 when c < 11.358432 / 30 = 0.3786144
 
 Containment sai 2×, 75% xuống 37,5%: Cost/Job **$30,289152**, GM **49,51808%**. Infra gấp đôi cho Cost/Job $28,477909, GM 52,53682%: không đạt GM60 và floor3×. Nếu phải QA mọi report với 60 phút thay vì sample 15 phút, riêng QA $20/attempt khiến mô hình gãy. Không che rủi ro này bằng tăng giá trên giấy.
 
-Ở pilot 3 workspace: 12 attempt, 9 AI-ready; fixed $80 phải chia trên 12, không giữ $10/attempt. COGS = $80 + 12×($8 + $0,108432 + $1,25) = **$192,301184**; Cost/Job **$21,366798**, report GM **64,38867%**, nhưng floor3× = $64,100395 > giá $60. Blended revenue $657, overhead $300 cho contribution chỉ 25,82935%; pilot có thể học được nhưng chưa vượt tất cả pricing gates. Giữ acquisition cap, không gọi pilot là steady-state model đã chứng minh.
+Ở pilot 3 workspace: 12 attempt, 9 AI-ready; fixed $80 phải chia trên 12, không giữ $10/attempt. COGS = $80 + 12×($8 + $0,108432 + $1,25) = **$192,301184**; Cost/Job **$21,366798**, report GM **64,38867%**, nhưng floor3× = $64,100395 > giá $60. Blended revenue $657, overhead $300 cho contribution chỉ 25,06831%; pilot có thể học được nhưng chưa vượt tất cả pricing gates. Giữ acquisition cap, không gọi pilot là steady-state model đã chứng minh.
 
 Khi zero completed, template trả 0; đó là lỗi presentation, không phải cost bằng 0. Validator phải báo **undefined/reject**, không nhận trạng thái xanh. Không sửa formula xám của template để che khác biệt; ghi giới hạn và kiểm tra độc lập.

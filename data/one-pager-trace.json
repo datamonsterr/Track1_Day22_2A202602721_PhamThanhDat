@@ -1,0 +1,527 @@
+[
+  {
+    "label": "Course day",
+    "sheet": "7_Assumptions",
+    "cell": "B80",
+    "value": 22,
+    "formatted": "22"
+  },
+  {
+    "label": "Student identifier",
+    "sheet": "7_Assumptions",
+    "cell": "B81",
+    "value": "2A202602721",
+    "formatted": "2A202602721"
+  },
+  {
+    "label": "Course track",
+    "sheet": "7_Assumptions",
+    "cell": "B90",
+    "value": 1,
+    "formatted": "1"
+  },
+  {
+    "label": "Price/source check date",
+    "sheet": "7_Assumptions",
+    "cell": "B52",
+    "value": "2026-10-08",
+    "formatted": "2026-10-08"
+  },
+  {
+    "label": "ICP minimum developers",
+    "sheet": "7_Assumptions",
+    "cell": "B5",
+    "value": 20,
+    "formatted": "20"
+  },
+  {
+    "label": "ICP maximum developers",
+    "sheet": "7_Assumptions",
+    "cell": "B6",
+    "value": 50,
+    "formatted": "50"
+  },
+  {
+    "label": "Data coverage gate",
+    "sheet": "7_Assumptions",
+    "cell": "B14",
+    "value": 0.8,
+    "formatted": "80.00%"
+  },
+  {
+    "label": "Workspace base fee",
+    "sheet": "7_Assumptions",
+    "cell": "B10",
+    "value": 39,
+    "formatted": "$39.00"
+  },
+  {
+    "label": "3_Value_Metric!B10",
+    "sheet": "3_Value_Metric",
+    "cell": "B10",
+    "value": 1,
+    "formatted": "1"
+  },
+  {
+    "label": "Scorecard maximum",
+    "sheet": "7_Assumptions",
+    "cell": "B89",
+    "value": 10,
+    "formatted": "10"
+  },
+  {
+    "label": "3_Value_Metric!B18",
+    "sheet": "3_Value_Metric",
+    "cell": "B18",
+    "value": 0,
+    "formatted": "0"
+  },
+  {
+    "label": "Scorecard maximum",
+    "sheet": "7_Assumptions",
+    "cell": "B89",
+    "value": 10,
+    "formatted": "10"
+  },
+  {
+    "label": "2_Pricing!B5",
+    "sheet": "2_Pricing",
+    "cell": "B5",
+    "value": 15.144576,
+    "formatted": "$15.14"
+  },
+  {
+    "label": "2_Pricing!B6",
+    "sheet": "2_Pricing",
+    "cell": "B6",
+    "value": 3,
+    "formatted": "3"
+  },
+  {
+    "label": "2_Pricing!B7",
+    "sheet": "2_Pricing",
+    "cell": "B7",
+    "value": 45.433728,
+    "formatted": "$45.43"
+  },
+  {
+    "label": "2_Pricing!B19",
+    "sheet": "2_Pricing",
+    "cell": "B19",
+    "value": 60,
+    "formatted": "$60.00"
+  },
+  {
+    "label": "2_Pricing!B21",
+    "sheet": "2_Pricing",
+    "cell": "B21",
+    "value": 0.7475904,
+    "formatted": "74.76%"
+  },
+  {
+    "label": "2_Pricing!B32",
+    "sheet": "2_Pricing",
+    "cell": "B32",
+    "value": 0.6,
+    "formatted": "60.00%"
+  },
+  {
+    "label": "2_Pricing!B33",
+    "sheet": "2_Pricing",
+    "cell": "B33",
+    "value": 0.473268,
+    "formatted": "47.33%"
+  },
+  {
+    "label": "1_Cost_Job!B10",
+    "sheet": "1_Cost_Job",
+    "cell": "B10",
+    "value": 0.75,
+    "formatted": "75.00%"
+  },
+  {
+    "label": "Planning workspaces",
+    "sheet": "7_Assumptions",
+    "cell": "B12",
+    "value": 10,
+    "formatted": "10"
+  },
+  {
+    "label": "1_Cost_Job!B9",
+    "sheet": "1_Cost_Job",
+    "cell": "B9",
+    "value": 40,
+    "formatted": "40"
+  },
+  {
+    "label": "1_Cost_Job!B11",
+    "sheet": "1_Cost_Job",
+    "cell": "B11",
+    "value": 30,
+    "formatted": "30"
+  },
+  {
+    "label": "1_Cost_Job!B72",
+    "sheet": "1_Cost_Job",
+    "cell": "B72",
+    "value": 4.016,
+    "formatted": "$4.02"
+  },
+  {
+    "label": "1_Cost_Job!B74",
+    "sheet": "1_Cost_Job",
+    "cell": "B74",
+    "value": 400,
+    "formatted": "$400.00"
+  },
+  {
+    "label": "1_Cost_Job!B76",
+    "sheet": "1_Cost_Job",
+    "cell": "B76",
+    "value": 50,
+    "formatted": "$50.00"
+  },
+  {
+    "label": "1_Cost_Job!B75",
+    "sheet": "1_Cost_Job",
+    "cell": "B75",
+    "value": 0.32128,
+    "formatted": "$0.32"
+  },
+  {
+    "label": "1_Cost_Job!B77",
+    "sheet": "1_Cost_Job",
+    "cell": "B77",
+    "value": 300,
+    "formatted": "$300.00"
+  },
+  {
+    "label": "Fully loaded Cost/Job",
+    "sheet": "7_Assumptions",
+    "cell": "B24",
+    "value": 25.144576,
+    "formatted": "$25.14"
+  },
+  {
+    "label": "Reports/customer/month",
+    "sheet": "7_Assumptions",
+    "cell": "B11",
+    "value": 3,
+    "formatted": "3"
+  },
+  {
+    "label": "ARPU",
+    "sheet": "7_Assumptions",
+    "cell": "B25",
+    "value": 219,
+    "formatted": "$219.00"
+  },
+  {
+    "label": "Monthly value anchor",
+    "sheet": "7_Assumptions",
+    "cell": "B19",
+    "value": 1200,
+    "formatted": "$1,200.00"
+  },
+  {
+    "label": "Reports/customer/month",
+    "sheet": "7_Assumptions",
+    "cell": "B11",
+    "value": 3,
+    "formatted": "3"
+  },
+  {
+    "label": "Net preparation hours saved/report",
+    "sheet": "7_Assumptions",
+    "cell": "B17",
+    "value": 10,
+    "formatted": "10"
+  },
+  {
+    "label": "Customer preparation labor",
+    "sheet": "7_Assumptions",
+    "cell": "B18",
+    "value": 40,
+    "formatted": "$40.00"
+  },
+  {
+    "label": "Total value-based monthly ceiling",
+    "sheet": "7_Assumptions",
+    "cell": "B48",
+    "value": 300,
+    "formatted": "$300.00"
+  },
+  {
+    "label": "GM risk threshold",
+    "sheet": "7_Assumptions",
+    "cell": "B88",
+    "value": 0.5,
+    "formatted": "50.00%"
+  },
+  {
+    "label": "GM50 containment threshold",
+    "sheet": "7_Assumptions",
+    "cell": "B53",
+    "value": 0.3786144,
+    "formatted": "37.86%"
+  },
+  {
+    "label": "3_Value_Metric!C26",
+    "sheet": "3_Value_Metric",
+    "cell": "C26",
+    "value": "$45/dev/tháng, annual billing",
+    "formatted": "$45/dev/tháng, annual billing"
+  },
+  {
+    "label": "3_Value_Metric!C27",
+    "sheet": "3_Value_Metric",
+    "cell": "C27",
+    "value": "$29/user/tháng annual; ≥50 dev; 1.000 credits; thêm từ $0,015/credit",
+    "formatted": "$29/user/tháng annual; ≥50 dev; 1.000 credits; thêm từ $0,015/credit"
+  },
+  {
+    "label": "4_Channel_Fit!B5",
+    "sheet": "4_Channel_Fit",
+    "cell": "B5",
+    "value": 219,
+    "formatted": "$219.00"
+  },
+  {
+    "label": "4_Channel_Fit!B9",
+    "sheet": "4_Channel_Fit",
+    "cell": "B9",
+    "value": 1964.6675712,
+    "formatted": "$1,964.67"
+  },
+  {
+    "label": "4_Channel_Fit!B8",
+    "sheet": "4_Channel_Fit",
+    "cell": "B8",
+    "value": 12,
+    "formatted": "12"
+  },
+  {
+    "label": "4_Channel_Fit!B22",
+    "sheet": "4_Channel_Fit",
+    "cell": "B22",
+    "value": 4800,
+    "formatted": "$4,800.00"
+  },
+  {
+    "label": "4_Channel_Fit!B23",
+    "sheet": "4_Channel_Fit",
+    "cell": "B23",
+    "value": 2.44316141334191,
+    "formatted": "2.44×"
+  },
+  {
+    "label": "4_Channel_Fit!B16",
+    "sheet": "4_Channel_Fit",
+    "cell": "B16",
+    "value": 0.182648401826484,
+    "formatted": "0.183"
+  },
+  {
+    "label": "PLG acquisition spend",
+    "sheet": "7_Assumptions",
+    "cell": "B28",
+    "value": 1200,
+    "formatted": "$1,200.00"
+  },
+  {
+    "label": "GitHub App installs",
+    "sheet": "7_Assumptions",
+    "cell": "B29",
+    "value": 60,
+    "formatted": "60"
+  },
+  {
+    "label": "PLG activated customers",
+    "sheet": "7_Assumptions",
+    "cell": "B79",
+    "value": 12,
+    "formatted": "12"
+  },
+  {
+    "label": "PLG paid customers",
+    "sheet": "7_Assumptions",
+    "cell": "B32",
+    "value": 3,
+    "formatted": "3"
+  },
+  {
+    "label": "PLG CAC",
+    "sheet": "7_Assumptions",
+    "cell": "B33",
+    "value": 400,
+    "formatted": "$400.00"
+  },
+  {
+    "label": "PLG operating CAC stop threshold",
+    "sheet": "7_Assumptions",
+    "cell": "B35",
+    "value": 400,
+    "formatted": "$400.00"
+  },
+  {
+    "label": "5_90Day_Plan!B5",
+    "sheet": "5_90Day_Plan",
+    "cell": "B5",
+    "value": "16:30 thứ Sáu cuối Sprint, trước giao ban CTO/CEO 09:00 thứ Hai.",
+    "formatted": "16:30 thứ Sáu cuối Sprint, trước giao ban CTO/CEO 09:00 thứ Hai."
+  },
+  {
+    "label": "Owner",
+    "sheet": "7_Assumptions",
+    "cell": "B66",
+    "value": "Phạm Thanh Đạt",
+    "formatted": "Phạm Thanh Đạt"
+  },
+  {
+    "label": "5_90Day_Plan!B11",
+    "sheet": "5_90Day_Plan",
+    "cell": "B11",
+    "value": "THÁNG 1 — Học",
+    "formatted": "THÁNG 1 — Học"
+  },
+  {
+    "label": "Pilot orgs",
+    "sheet": "7_Assumptions",
+    "cell": "B60",
+    "value": 3,
+    "formatted": "3"
+  },
+  {
+    "label": "Trial/activation window",
+    "sheet": "7_Assumptions",
+    "cell": "B56",
+    "value": 14,
+    "formatted": "14"
+  },
+  {
+    "label": "5_90Day_Plan!C11",
+    "sheet": "5_90Day_Plan",
+    "cell": "C11",
+    "value": "THÁNG 2–3 — Đòn bẩy",
+    "formatted": "THÁNG 2–3 — Đòn bẩy"
+  },
+  {
+    "label": "GitHub App installs",
+    "sheet": "7_Assumptions",
+    "cell": "B29",
+    "value": 60,
+    "formatted": "60"
+  },
+  {
+    "label": "PLG activated customers",
+    "sheet": "7_Assumptions",
+    "cell": "B79",
+    "value": 12,
+    "formatted": "12"
+  },
+  {
+    "label": "90-day paid target",
+    "sheet": "7_Assumptions",
+    "cell": "B78",
+    "value": 3,
+    "formatted": "3"
+  },
+  {
+    "label": "5_90Day_Plan!D11",
+    "sheet": "5_90Day_Plan",
+    "cell": "D11",
+    "value": "THÁNG 4+ — Mở rộng",
+    "formatted": "THÁNG 4+ — Mở rộng"
+  },
+  {
+    "label": "Pilot orgs",
+    "sheet": "7_Assumptions",
+    "cell": "B60",
+    "value": 3,
+    "formatted": "3"
+  },
+  {
+    "label": "Pilot Cost/Job",
+    "sheet": "7_Assumptions",
+    "cell": "B73",
+    "value": 21.3667982222222,
+    "formatted": "$21.37"
+  },
+  {
+    "label": "Pilot 3x COGS floor",
+    "sheet": "7_Assumptions",
+    "cell": "B74",
+    "value": 64.1003946666667,
+    "formatted": "$64.10"
+  },
+  {
+    "label": "Minimum paid orgs at floor3x",
+    "sheet": "7_Assumptions",
+    "cell": "B77",
+    "value": 4,
+    "formatted": "4"
+  },
+  {
+    "label": "Eval cases",
+    "sheet": "7_Assumptions",
+    "cell": "B62",
+    "value": 100,
+    "formatted": "100"
+  },
+  {
+    "label": "Owner",
+    "sheet": "7_Assumptions",
+    "cell": "B66",
+    "value": "Phạm Thanh Đạt",
+    "formatted": "Phạm Thanh Đạt"
+  },
+  {
+    "label": "Eval due",
+    "sheet": "7_Assumptions",
+    "cell": "B63",
+    "value": "2026-10-22",
+    "formatted": "2026-10-22"
+  },
+  {
+    "label": "Owner",
+    "sheet": "7_Assumptions",
+    "cell": "B66",
+    "value": "Phạm Thanh Đạt",
+    "formatted": "Phạm Thanh Đạt"
+  },
+  {
+    "label": "Procurement control verification due",
+    "sheet": "7_Assumptions",
+    "cell": "B64",
+    "value": "2026-10-15",
+    "formatted": "2026-10-15"
+  },
+  {
+    "label": "Pilot orgs",
+    "sheet": "7_Assumptions",
+    "cell": "B60",
+    "value": 3,
+    "formatted": "3"
+  },
+  {
+    "label": "Pilot duration",
+    "sheet": "7_Assumptions",
+    "cell": "B61",
+    "value": 4,
+    "formatted": "4"
+  },
+  {
+    "label": "Owner",
+    "sheet": "7_Assumptions",
+    "cell": "B66",
+    "value": "Phạm Thanh Đạt",
+    "formatted": "Phạm Thanh Đạt"
+  },
+  {
+    "label": "Pilot report due",
+    "sheet": "7_Assumptions",
+    "cell": "B65",
+    "value": "2026-11-23",
+    "formatted": "2026-11-23"
+  }
+]
