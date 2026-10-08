@@ -1,0 +1,13 @@
+{
+  "stage": 1,
+  "checked_on": "2026-10-08",
+  "sheets": {
+    "1_Cost_Job": {
+      "B5": "1 báo cáo Sprint/tháng AI-ready: đủ nguồn Jira/GitHub/AI ledger, coverage ≥80%, không lỗi nghiêm trọng; CTO review riêng.",
+      "B6": "A",
+      "B9": 40,
+      "B10": 0.75
+    }
+  },
+  "assumptions": []
+}
