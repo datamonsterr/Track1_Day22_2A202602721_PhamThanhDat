@@ -1,5 +1,5 @@
 {
-  "stage": 1,
+  "stage": 2,
   "checked_on": "2026-10-08",
   "sheets": {
     "1_Cost_Job": {
@@ -7,6 +7,31 @@
       "B6": "A",
       "B9": 40,
       "B10": 0.75
+    },
+    "3_Value_Metric": {
+      "B5": 0,
+      "B6": 0,
+      "B7": 0,
+      "B8": 0,
+      "B13": 0,
+      "B14": 0,
+      "B15": 0,
+      "B16": 0,
+      "B17": 0,
+      "B9": 1,
+      "A26": "Swarmia Standard",
+      "B26": "Seat",
+      "C26": "$45/dev/tháng, annual billing",
+      "D26": "https://www.swarmia.com/pricing/",
+      "A27": "LinearB Essentials",
+      "B27": "Hybrid: seat + AI credits",
+      "C27": "$29/user/tháng annual; 1.000 credits; thêm từ $0,015/credit",
+      "D27": "https://linearb.io/pricing",
+      "B30": "Hybrid",
+      "B31": "Không override: khớp Seat/Hybrid. CTO vẫn review, chưa đủ bằng chứng bán Outcome.",
+      "B32": "Workspace fee cho kết nối + Usage/báo cáo AI-ready; từ báo cáo đầu, không báo cáo miễn phí.",
+      "B33": "Attribution 1/10; Autonomy 0/10. Chưa có log/eval/pilot; rule viết được nhưng chưa validate.",
+      "B34": "Lỗ khi refresh vô hạn hoặc nhà cung cấp chịu sửa mọi ca; quota dataset, kỳ và opt-in overage."
     }
   },
   "assumptions": []

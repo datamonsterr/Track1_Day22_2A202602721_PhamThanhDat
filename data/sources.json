@@ -1,0 +1,109 @@
+[
+  {
+    "id": "anthropic-pricing",
+    "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "checked_on": "2026-10-08",
+    "status": "verified",
+    "facts": {
+      "model": "Claude Haiku 4.5",
+      "input_per_mtok": 1,
+      "output_per_mtok": 5,
+      "cache_write_5m_per_mtok": 1.25,
+      "cache_read_per_mtok": 0.1,
+      "batch_discount": 0.5
+    },
+    "scope": "First-party USD rates, no speech/server-side tools, no promotional expiry shown for chosen model."
+  },
+  {
+    "id": "anthropic-cache",
+    "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+    "checked_on": "2026-10-08",
+    "status": "verified",
+    "facts": {
+      "minimum_cache_tokens_haiku45": 4096,
+      "ttl_minutes": 5
+    },
+    "scope": "Cache prefix must be unchanged; read hits within TTL must be measured."
+  },
+  {
+    "id": "swarmia",
+    "url": "https://www.swarmia.com/pricing/",
+    "checked_on": "2026-10-08",
+    "status": "verified",
+    "facts": {
+      "plan": "Standard",
+      "usd_per_developer_month": 45,
+      "billing": "annual"
+    },
+    "scope": "Comparable category, broader feature set."
+  },
+  {
+    "id": "linearb",
+    "url": "https://linearb.io/pricing",
+    "checked_on": "2026-10-08",
+    "status": "verified",
+    "facts": {
+      "plan": "Essentials",
+      "usd_per_user_month": 29,
+      "billing": "annual",
+      "included_ai_credits": 1000,
+      "extra_credit_usd_from": 0.015
+    },
+    "scope": "50+ developers; not a per-report price."
+  },
+  {
+    "id": "vietcombank",
+    "url": "https://portal.vietcombank.com.vn/Usercontrols/TVPortal.TyGia/pXML.aspx",
+    "checked_on": "2026-10-08",
+    "status": "verified",
+    "facts": {
+      "published_datetime": "10/8/2026 12:13:07 PM",
+      "usd_buy": 25750,
+      "usd_transfer": 25780,
+      "usd_sell": 26160
+    },
+    "scope": "Sell quote selected for USD API purchase; excludes bank/card fees."
+  },
+  {
+    "id": "tunguz2016",
+    "url": "https://tomtunguz.com/smallest-acv-to-justify-inside-sales-team/",
+    "checked_on": "2026-10-08",
+    "status": "verified historical",
+    "facts": {
+      "example_quota": 500000,
+      "example_fully_loaded_ae": 100000,
+      "illustrative_inside_sales_acv": 3000
+    },
+    "scope": "Historical framework, not current Vietnam cost benchmark."
+  },
+  {
+    "id": "github-permissions",
+    "url": "https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app",
+    "checked_on": "2026-10-08",
+    "status": "verified",
+    "facts": {
+      "principle": "minimum permissions"
+    },
+    "scope": "App not implemented or installed by this lab."
+  },
+  {
+    "id": "github-marketplace",
+    "url": "https://docs.github.com/en/apps/github-marketplace/creating-apps-for-github-marketplace/requirements-for-listing-an-app",
+    "checked_on": "2026-10-08",
+    "status": "verified",
+    "facts": {
+      "listing_requires_review": true
+    },
+    "scope": "GitHub is distribution surface, not a signed partner; listing not approved."
+  },
+  {
+    "id": "anthropic-commercial",
+    "url": "https://www.anthropic.com/legal/commercial-terms",
+    "checked_on": "2026-10-08",
+    "status": "verified",
+    "facts": {
+      "commercial_api_customer_content_training": "not permitted under commercial terms"
+    },
+    "scope": "Does not prove DevPulse logging, retention or deletion controls."
+  }
+]
