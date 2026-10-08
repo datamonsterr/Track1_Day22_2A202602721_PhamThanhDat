@@ -142,3 +142,23 @@ def test_excel_evaluator_detects_cyclic_formulas():
     book.active['B1'] = '=A1'
     with pytest.raises(ValueError, match='Cyclic formula'):
         FormulaEvaluator(book).value(book.active.title, 'A1')
+
+
+def test_missing_formula_cache_is_rejected(copied_workbook):
+    import zipfile
+    from xml.etree import ElementTree
+    path = copied_workbook / 'deliverables/Day22-DevPulse-Monetization-Model.xlsx'
+    with zipfile.ZipFile(path) as archive:
+        files = {name:archive.read(name) for name in archive.namelist()}
+    xml = ElementTree.fromstring(files['xl/worksheets/sheet2.xml'])
+    namespace = '{http://schemas.openxmlformats.org/spreadsheetml/2006/main}'
+    target = next(cell for cell in xml.iter(namespace+'c') if cell.get('r') == 'B11')
+    value = target.find(namespace+'v')
+    if value is not None:
+        target.remove(value)
+    files['xl/worksheets/sheet2.xml'] = ElementTree.tostring(xml)
+    with zipfile.ZipFile(path, 'w', zipfile.ZIP_DEFLATED) as archive:
+        for name, content in files.items():
+            archive.writestr(name, content)
+    with pytest.raises(ValueError, match='Formula cache 1_Cost_Job!B11'):
+        validate_workbook(copied_workbook)
