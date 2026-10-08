@@ -297,7 +297,7 @@ def validate_final_artifacts(root):
     pdfs = list((root / 'deliverables').glob('*One-Pager*.pdf'))
     trace_path = root / 'data/one-pager-trace.json'
     require(len(documents) == 1 and len(pdfs) == 1 and trace_path.is_file(), 'Missing final DOCX/PDF/source-map artifacts')
-    import fitz
+    import pymupdf
     from docx import Document
     document = Document(documents[0])
     text = '\n'.join([p.text for p in document.paragraphs] +
@@ -310,7 +310,7 @@ def validate_final_artifacts(root):
         namespace = '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}'
         require(not any(el.get(namespace+'type') == 'page' for el in xml.iter(namespace+'br')),
                 'DOCX contains explicit page break')
-    with fitz.open(pdfs[0]) as pdf:
+    with pymupdf.open(pdfs[0]) as pdf:
         require(len(pdf) == 1, f'PDF must be exactly one page, found {len(pdf)}')
         pdf_text = pdf[0].get_text()
     trace = json.loads(trace_path.read_text())
@@ -328,6 +328,7 @@ def validate_final_artifacts(root):
     claims = numeric_claims(text, cached.sheetnames)
     allowed = {token for entry in trace for token in numeric.findall(str(entry['formatted']))}
     require(claims <= allowed, f'Untraced DOCX numbers: {sorted(claims - allowed)}')
+    require(claims <= numeric_claims(pdf_text, cached.sheetnames), 'DOCX numbers missing from PDF')
     # Text extracted from PDF must retain every substantive document word.
     words = lambda value: set(re.findall(r'[^\W\d_]+', value.lower(), re.UNICODE))
     require(words(text) <= words(pdf_text), f'DOCX content missing from PDF: {sorted(words(text)-words(pdf_text))[:8]}')

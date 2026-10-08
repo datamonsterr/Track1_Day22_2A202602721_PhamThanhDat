@@ -182,3 +182,25 @@ def test_sheet_identifiers_and_reference_ranges_are_not_numeric_claims():
     text = ('V!A26:D27; G!B5:B23; A!B28:B35,B79; M!B5:B8; A!B70:B77. '
             '1_Cost_Job; 5_90Day_Plan; 7_Assumptions. Plan 90 ngày, GM 74.76%.')
     assert numeric_claims(text, ['1_Cost_Job','5_90Day_Plan','7_Assumptions']) == {'90','74.76'}
+
+
+
+def test_pdf_cannot_omit_claimed_financial_numbers(tmp_path):
+    import shutil
+    import pymupdf
+    if json.loads((ROOT / 'data/workbook-inputs.json').read_text())["stage"] < 6:
+        pytest.skip("Final PDF mutation contract is required at checkpoint 6 only")
+    shutil.copytree(ROOT / 'data', tmp_path / 'data')
+    shutil.copytree(ROOT / 'deliverables', tmp_path / 'deliverables')
+    pdf_path = next((tmp_path / 'deliverables').glob('*One-Pager*.pdf'))
+    with pymupdf.open(pdf_path) as pdf:
+        rectangles = pdf[0].search_for('15.14')
+        assert rectangles, 'Fixture must contain the declared Cost/Job'
+        for rectangle in rectangles:
+            pdf[0].add_redact_annot(rectangle, fill=(1,1,1))
+        pdf[0].apply_redactions()
+        temporary = pdf_path.with_suffix('.redacted.pdf')
+        pdf.save(temporary)
+    temporary.replace(pdf_path)
+    with pytest.raises(ValueError, match='numbers missing from PDF'):
+        validate_final_artifacts(tmp_path)
