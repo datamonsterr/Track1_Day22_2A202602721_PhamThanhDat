@@ -1,5 +1,5 @@
 {
-  "stage": 4,
+  "stage": 5,
   "checked_on": "2026-10-08",
   "sheets": {
     "1_Cost_Job": {
@@ -93,6 +93,46 @@
       "B33": 4,
       "C33": 3,
       "D33": 2
+    },
+    "5_90Day_Plan": {
+      "B5": "16:30 thứ Sáu cuối Sprint, trước giao ban CTO/CEO 09:00 thứ Hai.",
+      "B6": "CTO/Tech Lead đang đóng Sprint, ghép Jira delivery + GitHub PR và AI-cost ledger để giải trình.",
+      "B7": "GitHub org/repo và Jira Sprint; nhóm nhận nhắc trong Slack #engineering-review.",
+      "B8": "GitHub App read-only metadata + Jira Sprint webhook; gửi Slack report card/link preview; CTO review và Publish trong workflow đã dùng. Chưa triển khai trong lab.",
+      "B12": "PLG: install link GitHub App, shadow pilot nhỏ",
+      "B13": "3 pilot orgs (chưa tuyển); không tính là paid",
+      "B14": "Phạm Thanh Đạt phỏng vấn 5 CTO; xác minh budget owner và job.",
+      "B15": "Kiểm tra control 15/10 và eval 22/10; chỉ dùng redacted shadow data trước gate.",
+      "B16": "Mời 3 org tự cài sau gate; bắt đầu pilot 24/10; ghi giờ công, token, failure.",
+      "B17": "≥1 AI-ready/report/org trong 14 ngày; 3 pilot onboard; coverage ≥80%; không lỗi critical.",
+      "B18": "Phạm Thanh Đạt — 08/10 đến 06/11/2026",
+      "C12": "PLG: GitHub App/Marketplace listing nếu được duyệt",
+      "C13": "60 qualified installs; 12 activation; 3 paid; 10 active workspaces mục tiêu, không đồng nghĩa 10 paid",
+      "C14": "Pilot 4 tuần kết thúc 20/11; xuất report 23/11 và đo refund/dispute.",
+      "C15": "Ráp self-serve onboarding, security Q&A và report mẫu; submit listing, không claim đã approved.",
+      "C16": "Bỏ tối đa $1.200 acquisition; stop nếu CAC>$400 hoặc sau 20 installs chưa 4 activation.",
+      "C17": "3 paid từ 60 installs; CAC≤$400; median activation≤14 ngày; điều kiện GM60 theo eval lower bound.",
+      "C18": "Phạm Thanh Đạt — 07/11/2026 đến 05/01/2027",
+      "D12": "PLG, giữ nguyên một kênh; chưa mở motion sales/partner",
+      "D13": "Chưa cam kết số khách mới; chỉ scale sau gate; đủ ≥4 paid trước giá steady-state $60 với shared floor hiện tại",
+      "D14": "Mở nhóm 51–100 dev chỉ nếu cohort hiện tại giữ ≥75% org publish tháng kế tiếp.",
+      "D15": "So invoice, eval, giờ QA và retention; cập nhật infra/tenant và pricing trước nâng quota.",
+      "D16": "Nếu permission/onboarding còn cần demo riêng, dừng PLG scale và ra quyết định mới.",
+      "D17": "GM≥60%; giá≥3×COGS tại volume thật; không lỗi critical; retention có mẫu số và khoảng tin cậy.",
+      "D18": "Phạm Thanh Đạt — từ 06/01/2027; review gate trước mở rộng",
+      "B23": "Chưa",
+      "C23": "Chưa có kết quả. Đánh giá 100 báo cáo nguồn gắn nhãn; planning75% không phải eval; đo AI-ready, lỗi critical, token/QA.",
+      "D23": "Phạm Thanh Đạt · 22/10/2026",
+      "B24": "Chưa — bản Q&A nháp đã có ở CP6",
+      "C24": "Procurement Q&A: hallucination/AI-ROI, data training, export/exit; control và deletion proof chưa có.",
+      "D24": "Phạm Thanh Đạt · 15/10/2026",
+      "B25": "Chưa",
+      "C25": "3 org tự nguyện; 4 tuần từ24/10 đến20/11; report23/11; ghi số job hoàn thành, QA và giờ chuẩn bị trước/sau.",
+      "D25": "Phạm Thanh Đạt · 23/11/2026",
+      "B29": "Chưa thực hiện với người lạ; không ghi Được khi chưa đo.",
+      "B30": "Chưa thực hiện với người lạ; AI review chỉ kiểm tra nội bộ.",
+      "B31": "Chưa thực hiện với người lạ; hẹn2 người độc lập trước nộp.",
+      "B32": "Chưa đo — chưa có người đọc độc lập thực tế."
     }
   },
   "assumptions": [
@@ -586,7 +626,7 @@
     ],
     [
       "Pilot report due",
-      "2026-11-07",
+      "2026-11-23",
       "date",
       "planned",
       "Recruitment/consent and measured logs required",
@@ -617,12 +657,84 @@
       "6_Benchmarks"
     ],
     [
-      "Planned end-of-90days model accounts",
+      "90-day active workspace target",
       10,
       "workspaces",
       "target",
-      "Not same as 3 incremental funnel wins; pilot+repeat funnel cohorts required",
+      "10 active, not all paid. Baseline10 paying is steady-state scenario beyond initial funnel.",
       "90-day plan"
+    ],
+    [
+      "Pilot attempts",
+      "=B60*B13",
+      "attempts/month",
+      "derived target",
+      "3 pilot orgs×4 attempts",
+      "Pilot Protocol"
+    ],
+    [
+      "Pilot AI-ready",
+      "=B70*'1_Cost_Job'!B10",
+      "reports/month",
+      "derived estimate",
+      "No measured containment",
+      "1_Cost_Job!B10"
+    ],
+    [
+      "Pilot COGS",
+      "=B36+B70*(B37+'1_Cost_Job'!B31+'1_Cost_Job'!B38+'1_Cost_Job'!B47+'2_Pricing'!B30)",
+      "USD/month",
+      "derived scenario",
+      "Fixed80 not divided over fictional40 attempts",
+      "Low-volume stress"
+    ],
+    [
+      "Pilot Cost/Job",
+      "=B72/B71",
+      "USD/report",
+      "derived scenario",
+      "All direct costs, no overhead",
+      "B72:B71"
+    ],
+    [
+      "Pilot 3x COGS floor",
+      "=B73*'2_Pricing'!B6",
+      "USD/report",
+      "derived scenario",
+      "Pilot at $60 fails floor3x; funding or ≥4paid needed",
+      "Low-volume stress"
+    ],
+    [
+      "Pilot report GM",
+      "=1-B73/'2_Pricing'!B19",
+      "fraction",
+      "derived scenario",
+      "Above60% but floor guardrail separate",
+      "Low-volume stress"
+    ],
+    [
+      "Contribution after overhead",
+      "=1-'1_Cost_Job'!B65/B22",
+      "fraction",
+      "derived forecast",
+      "Not gross margin, not full company P&L",
+      "B22 and 1_Cost_Job!B65"
+    ],
+    [
+      "Minimum paid orgs at floor3x",
+      4,
+      "workspaces",
+      "derived rounded condition",
+      "40-attempt baseline assumes10paid; at4paid/16attempts floor<$60",
+      "Cost volume equation"
+    ],
+    [
+      "90-day paid target",
+      "=B32",
+      "customers",
+      "derived target",
+      "3 incremental paying orgs, not10paying",
+      "PLG acquisition forecast"
     ]
   ],
   "notes": {
