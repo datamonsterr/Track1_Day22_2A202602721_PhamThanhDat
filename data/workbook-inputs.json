@@ -1,12 +1,34 @@
 {
-  "stage": 2,
+  "stage": 3,
   "checked_on": "2026-10-08",
   "sheets": {
     "1_Cost_Job": {
       "B5": "1 báo cáo Sprint/tháng AI-ready: đủ nguồn Jira/GitHub/AI ledger, coverage ≥80%, không lỗi nghiêm trọng; CTO review riêng.",
       "B6": "A",
       "B9": 40,
-      "B10": 0.75
+      "B10": 0.75,
+      "B15": 1,
+      "B16": 5,
+      "B17": 1.25,
+      "B18": 0.1,
+      "B19": 4,
+      "B20": 8000,
+      "B21": 12000,
+      "B22": 2000,
+      "B30": 0,
+      "B34": 0,
+      "B35": 0,
+      "B36": 0,
+      "B37": 0,
+      "B41": 10,
+      "B42": 0,
+      "B46": 0.08,
+      "B50": 20,
+      "B51": 0.25,
+      "B52": 15,
+      "B53": 20,
+      "B59": 300,
+      "B68": 26160
     },
     "3_Value_Metric": {
       "B5": 0,
@@ -32,7 +54,561 @@
       "B32": "Workspace fee cho kết nối + Usage/báo cáo AI-ready; từ báo cáo đầu, không báo cáo miễn phí.",
       "B33": "Attribution 1/10; Autonomy 0/10. Chưa có log/eval/pilot; rule viết được nhưng chưa validate.",
       "B34": "Lỗ khi refresh vô hạn hoặc nhà cung cấp chịu sửa mọi ca; quota dataset, kỳ và opt-in overage."
+    },
+    "2_Pricing": {
+      "B6": 3,
+      "B10": 1200,
+      "B11": 3,
+      "B14": 2000,
+      "B19": 60,
+      "B32": 0.6
     }
   },
-  "assumptions": []
+  "assumptions": [
+    [
+      "Product",
+      "DevPulse AI",
+      "text",
+      "Day20 specification",
+      "CTO engineering and AI-cost reporting",
+      "data/day20-metrics-pack.md"
+    ],
+    [
+      "ICP minimum developers",
+      20,
+      "developers",
+      "hypothesis",
+      "Narrow growth-team ICP; validate interviews",
+      "Day20 segments"
+    ],
+    [
+      "ICP maximum developers",
+      50,
+      "developers",
+      "hypothesis",
+      "Do not claim validated market",
+      "Day20 segments"
+    ],
+    [
+      "Budget owner",
+      "CTO; CEO/CFO per approval limit",
+      "text",
+      "hypothesis",
+      "Pilot confirms actual signer",
+      "docs/checkpoints/01-budget-job.md"
+    ],
+    [
+      "Budget line",
+      "Engineering Operations / Reporting",
+      "text",
+      "hypothesis",
+      "Time spent consolidating reporting",
+      "docs/checkpoints/01-budget-job.md"
+    ],
+    [
+      "Positioning",
+      "Chuẩn bị báo cáo Sprint/tháng có nguồn để CTO giải trình delivery và chi phí AI.",
+      "text",
+      "design",
+      "Not causal ROI outcome",
+      "Day20"
+    ],
+    [
+      "Workspace base fee",
+      39,
+      "USD/workspace/month",
+      "pricing hypothesis",
+      "Connections, history, standard support; zero included reports",
+      "Decision Note"
+    ],
+    [
+      "Reports/customer/month",
+      "='2_Pricing'!B11",
+      "reports",
+      "planning",
+      "2 sprint + 1 board report; average delivered",
+      "Day20 cadence"
+    ],
+    [
+      "Planning workspaces",
+      10,
+      "workspaces",
+      "hypothesis",
+      "Target steady planning cohort, not current users",
+      "90-day plan"
+    ],
+    [
+      "Attempts/workspace/month",
+      "='1_Cost_Job'!B9/B12",
+      "attempts",
+      "derived",
+      "40 attempts allocated to 10 workspaces",
+      "1_Cost_Job!B9"
+    ],
+    [
+      "Data coverage gate",
+      0.8,
+      "fraction",
+      "design",
+      "Coverage of active developers; suppress report if missing ledger",
+      "Day20 NSM"
+    ],
+    [
+      "Internal QA sample",
+      "='1_Cost_Job'!B51",
+      "fraction",
+      "hypothesis",
+      "25% sample while early; customer final review every report",
+      "1_Cost_Job!B51"
+    ],
+    [
+      "Customer review minutes",
+      30,
+      "minutes/report",
+      "Day20 specification",
+      "Not replaced by AI; cost borne by customer",
+      "Day20 action effort 15–30min"
+    ],
+    [
+      "Net preparation hours saved/report",
+      10,
+      "hours",
+      "hypothesis",
+      "Excludes final CTO review; stopwatch before/after",
+      "Pilot Protocol"
+    ],
+    [
+      "Customer preparation labor",
+      40,
+      "USD/hour",
+      "hypothesis",
+      "Fully loaded lead/analyst time; no wage benchmark claim",
+      "Pilot interview required"
+    ],
+    [
+      "Monthly value anchor",
+      "=B11*B17*B18",
+      "USD/month",
+      "derived estimate",
+      "No double-counting token or productivity savings",
+      "2_Pricing!B10"
+    ],
+    [
+      "Reporting role wage",
+      "='2_Pricing'!B14",
+      "USD/month",
+      "hypothesis",
+      "Secondary anchor only; no whole role replacement claim",
+      "2_Pricing!B14"
+    ],
+    [
+      "Monthly vendor COGS",
+      "='1_Cost_Job'!B62+'1_Cost_Job'!B63",
+      "USD/month",
+      "derived",
+      "All direct service costs",
+      "1_Cost_Job"
+    ],
+    [
+      "Monthly cohort revenue",
+      "=B12*(B10+B11*'2_Pricing'!B19)",
+      "USD/month",
+      "derived forecast",
+      "Base is additional, no included-report double charge",
+      "Hybrid pricing"
+    ],
+    [
+      "Blended cohort GM",
+      "=1-B21/B22",
+      "fraction",
+      "derived forecast",
+      "COGS includes workspace service; show separately from report GM",
+      "B21:B22"
+    ],
+    [
+      "Fully loaded Cost/Job",
+      "='1_Cost_Job'!B67",
+      "USD/report",
+      "derived",
+      "Overhead not included in gross margin",
+      "1_Cost_Job!B67"
+    ],
+    [
+      "ARPU",
+      "=B10+B11*'2_Pricing'!B19",
+      "USD/month",
+      "derived forecast",
+      "39 base + 3×60 reports",
+      "B10:B11"
+    ],
+    [
+      "Conservative channel GM",
+      "='2_Pricing'!B21",
+      "fraction",
+      "derived",
+      "Use report GM, lower than blended; conservative CAC cap",
+      "2_Pricing!B21"
+    ],
+    [
+      "CAC budget",
+      "='4_Channel_Fit'!B9",
+      "USD/customer",
+      "derived",
+      "SMB 12-month ceiling is lab convention, not proved retention",
+      "4_Channel_Fit!B9"
+    ],
+    [
+      "PLG acquisition spend",
+      1200,
+      "USD/90days",
+      "hypothesis",
+      "$800 founder content (40h×$20) + $200 content tools + $200 placement",
+      "No actual spend"
+    ],
+    [
+      "GitHub App installs",
+      60,
+      "installs/90days",
+      "target",
+      "Qualified org installations, not pageviews",
+      "No actual installs"
+    ],
+    [
+      "Activation rate",
+      0.2,
+      "fraction",
+      "hypothesis",
+      "First AI-ready report within 14 days",
+      "Pilot funnel"
+    ],
+    [
+      "Activation to paid",
+      0.25,
+      "fraction",
+      "hypothesis",
+      "3 paid from 12 activated",
+      "Pilot funnel"
+    ],
+    [
+      "PLG paid customers",
+      "=B29*B30*B31",
+      "customers",
+      "derived target",
+      "No sales rep or partner commission",
+      "B29:B31"
+    ],
+    [
+      "PLG CAC",
+      "=B28/B32",
+      "USD/customer",
+      "derived estimate",
+      "Includes founder time and free trial service allowance",
+      "B28:B32"
+    ],
+    [
+      "PLG payback months",
+      "=B33/('4_Channel_Fit'!B5*'4_Channel_Fit'!B6)",
+      "months",
+      "derived estimate",
+      "Use conservative report GM",
+      "4_Channel_Fit!B5:B6"
+    ],
+    [
+      "PLG operating CAC stop threshold",
+      400,
+      "USD/customer",
+      "decision hypothesis",
+      "Pause paid acquisition above $400 until conversion measured",
+      "PLG plan"
+    ],
+    [
+      "Shared service monthly floor",
+      80,
+      "USD/month",
+      "hypothesis",
+      "Hosting, auth and connectors minimum; requires invoice",
+      "Infra estimate"
+    ],
+    [
+      "Infra variable/attempt",
+      8,
+      "USD/attempt",
+      "hypothesis",
+      "$3 ingestion/DB + $1 storage/egress + $1 logging/eval + $1.5 support + $1.5 collection/reserve",
+      "Infra estimate"
+    ],
+    [
+      "Vendor QA minutes",
+      "='1_Cost_Job'!B52",
+      "minutes",
+      "hypothesis",
+      "Early sample review of evidence links and numerical accuracy",
+      "QA plan"
+    ],
+    [
+      "Vendor fully loaded hourly rate",
+      "='1_Cost_Job'!B50",
+      "USD/hour",
+      "hypothesis",
+      "Labor estimate including burden",
+      "QA plan"
+    ],
+    [
+      "Rep motion total annual acquisition cost",
+      48000,
+      "USD/year",
+      "hypothesis",
+      "$24k AE + $12k marketing + $12k tools/management; fully loaded, local scenario",
+      "Not ICONIQ benchmark"
+    ],
+    [
+      "Rep qualified opportunities/year",
+      40,
+      "opportunities",
+      "hypothesis",
+      "Low-velocity technical approval; replaces unknown external CPO",
+      "Local scenario"
+    ],
+    [
+      "Rep cost/opportunity",
+      "=B40/B41",
+      "USD/opportunity",
+      "derived estimate",
+      "Full acquisition cost divided by qualified opportunities",
+      "B40:B41"
+    ],
+    [
+      "Rep win rate",
+      0.25,
+      "fraction",
+      "hypothesis",
+      "10 wins from 40 opportunities",
+      "Local scenario"
+    ],
+    [
+      "Rep CAC",
+      "=B42/B43",
+      "USD/customer",
+      "derived estimate",
+      "Not measured or third-party industry statistic",
+      "B42:B43"
+    ],
+    [
+      "AE annual quota",
+      120000,
+      "USD/year",
+      "hypothesis",
+      "5× $24k fully loaded cost; conventional planning ratio, not benchmark",
+      "Sales scenario"
+    ],
+    [
+      "AE annual fully loaded cost",
+      24000,
+      "USD/year",
+      "hypothesis",
+      "$2,000/month inclusive burden; not actual payroll",
+      "Sales scenario"
+    ],
+    [
+      "Working days/year",
+      250,
+      "days",
+      "hypothesis",
+      "Lab working-year assumption",
+      "Channel inputs"
+    ],
+    [
+      "Total value-based monthly ceiling",
+      "='2_Pricing'!B10*0.25",
+      "USD/month",
+      "derived hypothesis",
+      "25% of value; all-in bill must fit, including base fee",
+      "2_Pricing!B10"
+    ],
+    [
+      "Overhead/month",
+      "='1_Cost_Job'!B59",
+      "USD/month",
+      "hypothesis",
+      "Product upkeep and admin, excludes CAC and direct support",
+      "1_Cost_Job!B59"
+    ],
+    [
+      "All-in baseline customer bill",
+      "=B25",
+      "USD/month",
+      "pricing hypothesis",
+      "Opt-in before overage; no auto unlimited retries",
+      "B25"
+    ],
+    [
+      "USD/VND sell quote",
+      "='1_Cost_Job'!B68",
+      "VND/USD",
+      "verified 2026-10-08",
+      "VCB XML published 12:13:07 PM",
+      "data/sources.json#vietcombank"
+    ],
+    [
+      "Price/source check date",
+      "2026-10-08",
+      "date",
+      "verified",
+      "Chosen vendor and peers; not all historical rows",
+      "data/sources.json"
+    ],
+    [
+      "GM50 containment threshold",
+      "=('2_Pricing'!B29+'2_Pricing'!B30)/('2_Pricing'!B19*0.5)",
+      "fraction",
+      "derived A-only",
+      "Below this threshold report GM <50%",
+      "2_Pricing!B29:B30"
+    ],
+    [
+      "GM60 containment threshold",
+      "='2_Pricing'!B33",
+      "fraction",
+      "derived",
+      "Not accounting breakeven GM=0; healthy-margin floor",
+      "2_Pricing!B33"
+    ],
+    [
+      "Monthly report cadence",
+      "2 Sprint + 1 Board",
+      "reports/month",
+      "Day20 target",
+      "Mean completed preparation jobs =3/workspace",
+      "Day20 engagement"
+    ],
+    [
+      "Trial/activation window",
+      14,
+      "days",
+      "design target",
+      "One small redacted report; no unlimited full-history trial",
+      "Day20 activation"
+    ],
+    [
+      "Attempt quota/workspace/month",
+      8,
+      "attempts",
+      "design proposal",
+      "Alerts then pause; user approves revised quota/price",
+      "Usage guardrail"
+    ],
+    [
+      "Dataset PR limit/workspace/month",
+      1000,
+      "PR metadata records",
+      "design proposal",
+      "Beyond limit: no silent ingestion or overage",
+      "Usage guardrail"
+    ],
+    [
+      "Raw metadata retention",
+      90,
+      "days",
+      "policy proposal",
+      "Must verify export/deletion before pilot; not implemented claim",
+      "Procurement Q&A"
+    ],
+    [
+      "Pilot orgs",
+      3,
+      "organizations",
+      "target",
+      "Candidates not named yet; recruit voluntarily via PLG",
+      "5_90Day_Plan!B13"
+    ],
+    [
+      "Pilot duration",
+      4,
+      "weeks",
+      "target",
+      "Not a completed pilot report",
+      "Pilot Protocol"
+    ],
+    [
+      "Eval cases",
+      100,
+      "jobs",
+      "target",
+      "Stratified normal/edge/error reports; no eval result claim",
+      "Eval Plan"
+    ],
+    [
+      "Eval due",
+      "2026-10-22",
+      "date",
+      "planned",
+      "Owner Phạm Thanh Đạt",
+      "5_90Day_Plan!D23"
+    ],
+    [
+      "Procurement control verification due",
+      "2026-10-15",
+      "date",
+      "planned",
+      "Written answers drafted; live proof pending",
+      "5_90Day_Plan!D24"
+    ],
+    [
+      "Pilot report due",
+      "2026-11-07",
+      "date",
+      "planned",
+      "Recruitment/consent and measured logs required",
+      "5_90Day_Plan!D25"
+    ],
+    [
+      "Owner",
+      "Phạm Thanh Đạt",
+      "name",
+      "assignment",
+      "Only named owner from input; no invented teammates",
+      "User submission"
+    ],
+    [
+      "Independent human reader test",
+      "Chưa thực hiện",
+      "status",
+      "pending",
+      "AI review cannot substitute an actual stranger",
+      "5_90Day_Plan!B29:B32"
+    ],
+    [
+      "Historical template benchmark scope",
+      "Chỉ Haiku/cache đã kiểm tra; các dòng khác giữ nguyên tham chiếu cũ",
+      "text",
+      "not verified current",
+      "No use of unverified promotional or ICONIQ prices",
+      "6_Benchmarks"
+    ],
+    [
+      "Planned end-of-90days model accounts",
+      10,
+      "workspaces",
+      "target",
+      "Not same as 3 incremental funnel wins; pilot+repeat funnel cohorts required",
+      "90-day plan"
+    ]
+  ],
+  "notes": {
+    "1_Cost_Job!B9": "Planning: 10 workspaces × 4 attempted reports/month = 40. Day20 cadence: two sprint reports and one board report delivered. Not current customers.",
+    "1_Cost_Job!B10": "75% planning assumption, not eval. 40 attempts → 30 AI-ready. CTO review remains mandatory; preparation containment ≠ end-to-end autonomy.",
+    "1_Cost_Job!B20": "8,000 stable prefix tokens ≥ Haiku 4.5 cache minimum 4,096. Four sequential calls within five-minute TTL. No claim measured hit rate.",
+    "1_Cost_Job!B21": "12,000 average fresh tokens/call includes history, structured source aggregates, tool schemas and results; no raw source-code ingestion. Must replace with usage logs.",
+    "1_Cost_Job!B30": "No Batch in baseline: planned on-demand preview within 15 minutes. Batch scenario only for overnight reports, no assumed cache sharing across batched jobs.",
+    "1_Cost_Job!B41": "$80 shared monthly floor / 40 attempts + $8 per attempt = $10. $8: ingestion/DB $3, storage/egress $1, logging/eval $1, direct support $1.5, collection/FX/tax contingency $1.5. Estimates, not invoices.",
+    "1_Cost_Job!B46": "8% assumes exactly one extra full inference per affected job. More repeats require expected extra call count, not probability alone. Infra retry reserve in logging component.",
+    "1_Cost_Job!B50": "Fully-loaded vendor QA/support $20/hour is planning assumption, not Vietnam wage benchmark.",
+    "1_Cost_Job!B53": "20 minutes/customer-reworked failure is a scenario input. Vendor cost = zero only in variant A; customer burden must be measured.",
+    "1_Cost_Job!B59": "$300/month allocation: ongoing product maintenance 8h×$20 + admin 7h×$20. Acquisition spend is in CAC, not double-counted here. Not complete startup payroll.",
+    "1_Cost_Job!B68": "Vietcombank XML USD sell 26,160 VND/USD; published 10/8/2026 12:13:07 PM; checked 2026-10-08. Excludes payment fees.",
+    "2_Pricing!B10": "3 reports/month × 10 net preparation hours saved × $40/hour = $1,200. No token-spend savings or causal developer productivity claim. Pilot stopwatch required.",
+    "2_Pricing!B11": "AI-ready reports/customer/month, not attempted reports. Three reports follows two sprint reports + one monthly board review from Day20.",
+    "2_Pricing!B14": "Hypothetical reporting analyst $2,000/month; not an employee actually replaced. Primary anchor is saved preparation hours.",
+    "2_Pricing!B19": "$60/report, hypothesis: above 3×COGS floor; at 3 reports plus $39 base, $219/month < 25% of $1,200 saved. WTP unvalidated."
+  }
 }
