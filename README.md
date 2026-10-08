@@ -1,21 +1,38 @@
 # Day22 — AI Product GTM & Monetization
 
-**Phạm Thanh Đạt · 2A202602721 · Track 1**
+**Phạm Thanh Đạt · 2A202602721 · Track 1 · 08/10/2026**
 
-Bài lab tiếp tục **DevPulse AI** từ Day20: chuẩn bị báo cáo Sprint/tháng có nguồn cho CTO quản lý delivery và chi phí AI.
+Bài lab tiếp tục **DevPulse AI** từ Day20: chuẩn bị báo cáo Sprint/tháng có nguồn Jira, GitHub và AI-cost ledger cho CTO nhóm 20–50 developer.
 
 ## Hồ sơ nộp bài
 
-- `deliverables/Day22-DevPulse-Monetization-Model.xlsx`: workbook hoàn thành.
-- `deliverables/Day22-DevPulse-Monetization-One-Pager.docx`: One-Pager theo ba block của template.
-- `deliverables/Day22-DevPulse-Monetization-One-Pager.pdf`: bản render để đọc và kiểm tra một trang.
-- `docs/checkpoints/`: sáu trạm và lý do của từng quyết định.
-- `docs/evidence/`: Eval Plan, Procurement Q&A và Pilot Protocol; không giả mạo kết quả chưa có.
-- `docs/reviews/`: prompt English và accept/reject/partial bằng tiếng Việt.
-- `templates/`: hai attachment gốc nguyên vẹn.
-- `data/`: nguồn Day20, input và danh mục nguồn.
+- [Excel model](deliverables/Day22-DevPulse-Monetization-Model.xlsx): bảy tab gốc đã điền và một tab assumptions/traceability bổ sung.
+- [Word One-Pager](deliverables/Day22-DevPulse-Monetization-One-Pager.docx): ba block Pricing, GTM và Evidence.
+- [PDF One-Pager](deliverables/Day22-DevPulse-Monetization-One-Pager.pdf): bản render đúng một trang.
+- [Sáu checkpoint](docs/checkpoints/): quyết định, số học, nguồn và các gate chưa đạt.
+- [Evidence Pack](docs/evidence/): Eval Plan, Procurement Q&A và Pilot Protocol.
+- [AI critique logs](docs/reviews/): prompt English, kết quả thật và disposition bằng tiếng Việt.
+- [Verification](docs/verification.md) và [manual checks](MANUAL_TESTS.md).
+- [Nguồn](data/sources.json), [input](data/workbook-inputs.json), [numeric mapping](data/one-pager-trace.json).
 
-**Trạng thái bằng chứng:** chưa có telemetry, eval DevPulse, hợp đồng hoặc pilot thực đo trong đầu vào. Các số vận hành và pricing là giả thuyết được gắn nhãn và deadline xác minh. Không tuyên bố đã vượt reader test con người.
+## Kết luận mô hình
+
+Baseline **forecast 10 paying workspace**: Cost/Job COGS **$15,144576**; giá sàn **$45,433728**; đề xuất **$60/report + $39/workspace/tháng**; report GM **74,75904%**; containment tối thiểu cho GM60 **47,3268%**. PLG forecast CAC **$400**; rep-motion CAC scenario **$4.800**.
+
+Đầu vào không có telemetry, eval DevPulse, pilot, customer payments hoặc signed partner. Các số vận hành và giá bán là giả định có rationale và deadline xác minh. Pilot ba paying workspace chưa đạt floor3× ở giá $60; chỉ scale khi gate theo volume thực tế và eval lower bound đạt. Human reader test vẫn ghi **chưa thực hiện**; không dùng AI simulation làm bằng chứng người thật.
+
+## Checkpoint commits
+
+| Checkpoint | Commit | Đầu ra |
+| --- | --- | --- |
+| CP1 | da756a8 | Buyer, ngân sách và Job |
+| CP2 | fabbded | Hybrid, scorecard và hai benchmark |
+| CP3 | c5125b9 | Năm nhóm chi phí, giá và sensitivity |
+| CP4 | 75fac90 | PLG và CAC affordability |
+| CP5 | 8e2ce03 | Pain Moment và kế hoạch có gate |
+| CP6 | 86ed869 | Evidence Pack và One-Pager có trace |
+
+[PR verification #3](https://github.com/datamonsterr/Track1_Day22_2A202602721_PhamThanhDat/pull/3) đã merge sau khi review diff và CI xanh. **64 tests pass, không skip; 132 formula caches, 75 trace entries, hai template hashes và chín nguồn đã kiểm tra.** [CI trên main sau merge](https://github.com/datamonsterr/Track1_Day22_2A202602721_PhamThanhDat/actions/runs/37733888574).
 
 ## Tái tạo và kiểm tra
 
@@ -23,11 +40,11 @@ Bài lab tiếp tục **DevPulse AI** từ Day20: chuẩn bị báo cáo Sprint/
 uv venv .venv
 uv pip install --python .venv/bin/python -r requirements.txt
 .venv/bin/python scripts/build_workbook.py
+.venv/bin/python scripts/recalculate.py xlsx
+.venv/bin/python scripts/build_one_pager.py
+.venv/bin/python scripts/recalculate.py pdf
 .venv/bin/python -m pytest -q
+.venv/bin/python scripts/validate_model.py
 ```
 
-Workbook cần Excel hoặc LibreOffice để cập nhật formula cache khi thay input. Quy trình render và kiểm tra được ghi tại `docs/verification.md` sau checkpoint cuối.
-
-## Checkpoint commits
-
-Xem `git log --oneline`: CP1 budget/job; CP2 Value Metric; CP3 Cost/Job/pricing; CP4 channel; CP5 plan; CP6 evidence/One-Pager/validation. Thông tin test và CI chỉ được ghi sau khi chạy.
+Các lệnh `recalculate` cần container LibreOffice như hướng dẫn trong verification. Workbook cần Excel/LibreOffice để cập nhật formula cache khi đổi input; openpyxl không tự tính công thức. Hai attachment gốc lưu nguyên vẹn trong `templates/`; dữ liệu Day20 được lưu trong `data/day20-metrics-pack.md`.
