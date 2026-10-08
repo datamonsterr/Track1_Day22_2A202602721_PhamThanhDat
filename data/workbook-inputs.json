@@ -1,5 +1,5 @@
 {
-  "stage": 3,
+  "stage": 4,
   "checked_on": "2026-10-08",
   "sheets": {
     "1_Cost_Job": {
@@ -62,6 +62,37 @@
       "B14": 2000,
       "B19": 60,
       "B32": 0.6
+    },
+    "4_Channel_Fit": {
+      "B5": 219,
+      "B7": "SMB",
+      "B13": 120000,
+      "B14": 250,
+      "B20": 1200,
+      "B21": 0.25,
+      "B38": "PLG",
+      "B39": "Không áp dụng: GitHub, Inc. là bề mặt phân phối, chưa có partner hợp đồng.",
+      "B40": "Chưa; không chọn Partner-Led",
+      "B41": "Không áp dụng. Khách tự cài GitHub App; không giả quan hệ partner hoặc commission.",
+      "B42": "Giữ PLG tự phục vụ; thử 3 pilot nhỏ trong 30 ngày. Không tuyển AE khi CAC rep $4.800 vượt budget.",
+      "B28": 4,
+      "C28": 1,
+      "D28": 2,
+      "B29": 3,
+      "C29": 4,
+      "D29": 2,
+      "B30": 3,
+      "C30": 2,
+      "D30": 1,
+      "B31": 3,
+      "C31": 4,
+      "D31": 1,
+      "B32": 5,
+      "C32": 3,
+      "D32": 3,
+      "B33": 4,
+      "C33": 3,
+      "D33": 2
     }
   },
   "assumptions": [
@@ -609,6 +640,12 @@
     "2_Pricing!B10": "3 reports/month × 10 net preparation hours saved × $40/hour = $1,200. No token-spend savings or causal developer productivity claim. Pilot stopwatch required.",
     "2_Pricing!B11": "AI-ready reports/customer/month, not attempted reports. Three reports follows two sprint reports + one monthly board review from Day20.",
     "2_Pricing!B14": "Hypothetical reporting analyst $2,000/month; not an employee actually replaced. Primary anchor is saved preparation hours.",
-    "2_Pricing!B19": "$60/report, hypothesis: above 3×COGS floor; at 3 reports plus $39 base, $219/month < 25% of $1,200 saved. WTP unvalidated."
+    "2_Pricing!B19": "$60/report, hypothesis: above 3×COGS floor; at 3 reports plus $39 base, $219/month < 25% of $1,200 saved. WTP unvalidated.",
+    "4_Channel_Fit!B5": "39 base + 3 AI-ready reports ×60 =219 USD/month. Expected ARPU, not current revenue.",
+    "4_Channel_Fit!B7": "SMB engineering team20–50 devs, per Day20. 12-month payback is lab ceiling, not retention evidence; use tighter CAC $400 operating stop.",
+    "4_Channel_Fit!B13": "Local planning quota120k/year =5×24k fully loaded AE cost. Not historical $500k quota copied from Tunguz.",
+    "4_Channel_Fit!B20": "Local bottom-up scenario: 48k annual rep motion acquisition spend /40 qualified opportunities =1200. Not unverified ICONIQ2026 cost-per-opportunity.",
+    "4_Channel_Fit!B21": "25% assumption:10 wins/40 opportunities; replace with actual funnel.",
+    "4_Channel_Fit!B38": "PLG is a proposed 90-day motion, not a functioning current acquisition channel. GitHub App installation and trust friction are principal falsification risks."
   }
 }
