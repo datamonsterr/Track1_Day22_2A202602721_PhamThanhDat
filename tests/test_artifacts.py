@@ -162,3 +162,16 @@ def test_missing_formula_cache_is_rejected(copied_workbook):
             archive.writestr(name, content)
     with pytest.raises(ValueError, match='Formula cache 1_Cost_Job!B11'):
         validate_workbook(copied_workbook)
+
+
+def test_source_map_cannot_disguise_a_different_number():
+    from scripts.validate_model import validate_formatted_number
+    with pytest.raises(ValueError, match='Formatted value'):
+        validate_formatted_number(60, '$100', 'report price')
+
+
+@pytest.mark.parametrize('value,formatted', [(15.144576,'$15.14'),(.7475904,'74.76%'),
+                                           (26160,'26,160'),(.9,'0,90'),(60,'$60'),(-.2,'-20%')])
+def test_source_map_accepts_declared_rounding_and_units(value, formatted):
+    from scripts.validate_model import validate_formatted_number
+    validate_formatted_number(value,formatted,'fixture')

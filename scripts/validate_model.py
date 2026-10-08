@@ -252,6 +252,33 @@ def validate_workbook(root):
     return count
 
 
+def validate_formatted_number(value, formatted, label):
+    """Require a displayed numerical claim to round the traced workbook value."""
+    require(not isinstance(value, bool) and isinstance(value, (int, float)) and math.isfinite(value),
+            f'Formatted value source must be finite: {label}')
+    tokens = re.findall(r"-?\d+(?:[.,]\d+)*", str(formatted))
+    require(bool(tokens), f'Formatted value has no number: {label}')
+    token = tokens[0]
+    target = value * 100 if '%' in str(formatted) else value
+    candidates = []
+    if ',' in token and '.' in token:
+        decimal = ',' if token.rfind(',') > token.rfind('.') else '.'
+        grouping = '.' if decimal == ',' else ','
+        normalized = token.replace(grouping, '').replace(decimal, '.')
+        candidates.append((float(normalized), len(token.rsplit(decimal, 1)[1])))
+    else:
+        separator = ',' if ',' in token else '.' if '.' in token else None
+        if separator:
+            digits = len(token.rsplit(separator, 1)[1])
+            candidates.append((float(token.replace(separator, '.')), digits))
+            if digits == 3:
+                candidates.append((float(token.replace(separator, '')), 0))
+        else:
+            candidates.append((float(token), 0))
+    require(any(abs(shown-target) <= .5*10**(-precision)+1e-10 for shown,precision in candidates),
+            f'Formatted value disagrees with workbook: {label}: {formatted!r} vs {value!r}')
+
+
 def validate_final_artifacts(root):
     if read_inputs(root)['stage'] < 6:
         return {'status':'not required before checkpoint 6'}
@@ -282,12 +309,16 @@ def validate_final_artifacts(root):
         require(set(('label','sheet','cell','value','formatted')) <= entry.keys(), 'Incomplete source-map entry')
         require(entry['sheet'] in cached.sheetnames, f'Unknown source-map sheet {entry["sheet"]}')
         equal(entry['value'], cached[entry['sheet']][entry['cell']].value, f'Source map {entry["label"]}')
+        if isinstance(entry['value'], (int, float)) and not isinstance(entry['value'], bool):
+            validate_formatted_number(entry['value'], entry['formatted'], entry['label'])
         require(str(entry['formatted']) in text, f'Source-map formatted value absent in DOCX: {entry["label"]}')
     # Every numeric token visible in the DOCX must come from a traced formatted value.
     numeric = re.compile(r'\d+(?:[.,]\d+)*')
+    claims = re.sub(r"https?://\S+", "", text)
+    claims = re.sub(r"(?:'[^']+'|[A-Za-z0-9_]+)!\$?[A-Z]+\$?\d+", "", claims)
     allowed = {token for entry in trace for token in numeric.findall(str(entry['formatted']))}
-    require(set(numeric.findall(text)) <= allowed,
-            f'Untraced DOCX numbers: {sorted(set(numeric.findall(text)) - allowed)}')
+    require(set(numeric.findall(claims)) <= allowed,
+            f'Untraced DOCX numbers: {sorted(set(numeric.findall(claims)) - allowed)}')
     # Text extracted from PDF must retain every substantive document word.
     words = lambda value: set(re.findall(r'[^\W\d_]+', value.lower(), re.UNICODE))
     require(words(text) <= words(pdf_text), f'DOCX content missing from PDF: {sorted(words(text)-words(pdf_text))[:8]}')
